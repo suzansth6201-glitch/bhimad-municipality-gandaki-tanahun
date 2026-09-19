@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>भिमाद नगरपालिका | आधिकारिक वेब पोर्टल</title>
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #2563eb;
+      --accent: #f59e0b;
+      --light-bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Mukta', 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand i {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    .brand h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand span {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      display: block;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .live-time {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      margin-top: 60px;
+      background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.85)), 
+                  url('https://i.imgur.com/Bf1O1dD.jpg') center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 25px;
+      color: #e2e8f0;
+      font-weight: 300;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      background: #e08e0b;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h3 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section-title h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Origin & Legend Section */
+    .origin-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 35px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      margin-bottom: 50px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .origin-img {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .origin-img img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .origin-text {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .origin-text h4 {
+      font-size: 1.6rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+    }
+
+    .origin-text p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      text-align: justify;
+    }
+
+    /* Wards Grid */
+    .wards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .ward-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ward-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .ward-img {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ward-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .ward-card:hover .ward-img img {
+      transform: scale(1.08);
+    }
+
+    .ward-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .ward-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .ward-body h5 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .ward-body p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .ward-features {
+      list-style: none;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+
+    .ward-features li {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ward-features i {
+      color: var(--secondary);
+    }
+
+    .btn-details {
+      width: 100%;
+      padding: 10px;
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-details:hover {
+      background: #1d4ed8;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: var(--radius);
+      max-width: 650px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: #94a3b8;
+      padding: 40px 20px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2.2rem; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <a href="#" class="brand">
+      <i class="fa-solid fa-mountain-city"></i>
+      <div>
+        <h1>भिमाद नगरपालिका</h1>
+        <span>तनहुँ, गण्डकी प्रदेश</span>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#about">परिचय</a></li>
+        <li><a href="#wards">वडाहरू</a></li>
+        <li><a href="#contact">सम्पर्क</a></li>
+      </ul>
+    </nav>
+    <div class="live-time" id="liveClock">NST --:--:--</div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>भिमाद नगरपालिकामा हार्दिक स्वागत छ</h2>
+      <p>प्राकृतिक सौन्दर्य, ऐतिहासिक 'भीमबाँध' पहिचान र तीव्र विकासको यात्रामा अघि बढ्दै गरेको सुन्दर नगर।</p>
+      <a href="#wards" class="hero-btn">वडागत विवरण हेर्नुहोस् <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Origin & Story Section -->
+    <section id="about">
+      <div class="section-title">
+        <h3>ऐतिहासिक पृष्ठभूमि र पौराणिक नामकरण</h3>
+      </div>
+      <div class="origin-card">
+        <div class="origin-img">
+          <img src="https://i.imgur.com/uG5KzR8.jpg" alt="भिमाद बजार र सेती नदी">
+        </div>
+        <div class="origin-text">
+          <h4><i class="fa-solid fa-landmark"></i> 'भीमबाँध' देखि 'भिमाद' सम्म</h4>
+          <p>
+            पौराणिक तथा ऐतिहासिक मान्यता अनुसार महाभारत कालमा पाण्डवपुत्र भीमले नदी नियन्त्रण गर्ने क्रममा वा सेती नदी थुनेर बाँध बाँधेको भन्ने किंवदन्ती रहेकाले यस ठाउँको नाम <strong>"भीमबाँध" (भीमबन्ध)</strong> रहन गएको हो। समयक्रममा उक्त शब्द अपभ्रंश हुँदै आधुनिक रूपमा <strong>"भिमाद"</strong> नामकरण हुन पुगेको जनविश्वास छ।
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wards Section -->
+    <section id="wards">
+      <div class="section-title">
+        <h3>वडागत डिजिटल प्रोफाइल (वडा १ - ९)</h3>
+      </div>
+
+      <div class="wards-grid">
+
+        <!-- Ward 1 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/7SZyIuB.jpg" alt="वडा १ कार्यालय">
+            <span class="ward-badge">वडा नं. १</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. १ (किहुँ)</h5>
+            <p>कृषि र पशुपालनका लागि उर्वर भूमि तथा शान्त वातावरणयुक्त वडा।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: किहुँ, भुर्तेलडाँडा</li>
+              <li><i class="fa-solid fa-wheat-awn"></i> विशेषता: कृषि, शान्त वातावरण</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. १', 'मुख्य स्थानहरू: किहुँ, भुर्तेलडाँडा, बयापानी।\nविशेषता: कृषि उत्पादन, सुन्तला खेती र मनोरम ग्रामीण दृश्य।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 2 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/83p1XbT.jpg" alt="वडा २ कार्यालय">
+            <span class="ward-badge">वडा नं. २</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. २ (मिछुर्के)</h5>
+            <p>ऐतिहासिक तथा सांस्कृतिक पहिचान बोकेको जनजाति बहुल क्षेत्र।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: मिछुर्के, राङरुङ</li>
+              <li><i class="fa-solid fa-people-roof"></i> विशेषता: गुरुङ तथा मगर संस्कृति</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. २', 'मुख्य स्थानहरू: मिछुर्के, राङरुङ।\nविशेषता: होमस्टेको सम्भावना, सांस्कृतिक सम्पदा र पदयात्रा मार्ग।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 3 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/yU2K2X0.png" alt="वडा ३ कार्यालय">
+            <span class="ward-badge">वडा नं. ३</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ३ (माझकोट)</h5>
+            <p>ऐतिहासिक माझकोट र धार्मिक दृष्टिकोणले महत्त्वपूर्ण क्षेत्र।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: माझकोट, डाँडाबारी</li>
+              <li><i class="fa-solid fa-monument"></i> विशेषता: ऐतिहासिक कोट तथा मन्दिर</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ३', 'मुख्य स्थानहरू: माझकोट, डाँडाबारी।\nविशेषता: पुराना कोट अवशेष, धार्मिक मन्दिर र दृश्य अवलोकन।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 4 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/3ZkZ3b9.jpg" alt="वडा ४ कार्यालय">
+            <span class="ward-badge">वडा नं. ४</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ४ (भिमाद बजार)</h5>
+            <p>नगरपालिकाको प्रशासनिक तथा मुख्य व्यापारिक मुटु।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: भिमाद मुख्य बजार</li>
+              <li><i class="fa-solid fa-store"></i> विशेषता: व्यापार, आर्थिक केन्द्र</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ४', 'मुख्य स्थानहरू: भिमाद बजार, सेती किनार।\nविशेषता: मुख्य व्यापारिक केन्द्र, बैंक, वित्तीय संस्था र यातायात पहुँच।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 5 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/7SZyIuB.jpg" alt="वडा ५ कार्यालय">
+            <span class="ward-badge">वडा नं. ५</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ५ (पाटन)</h5>
+            <p>समथर भू-भाग र कृषि तथा नयाँ सहरीकरण तर्फ अघि बढ्दै गरेको क्षेत्र।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: ऋषिङ पाटन</li>
+              <li><i class="fa-solid fa-city"></i> विशेषता: समथर पाटन, तरकारी खेती</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ५', 'मुख्य स्थानहरू: पाटन बजार, ऋषिङ पाटन।\nविशेषता: उपत्यका जस्तो समथर जमिन, सिँचाइ सुविधा र कृषि उत्पादन।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 6 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/K3v8L7m.jpg" alt="वडा ६ कार्यालय">
+            <span class="ward-badge">वडा नं. ६</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ६ (मेलेगौँडा)</h5>
+            <p>सेती नदी र म्याग्दे खोलाको निकट अवस्थित पूर्वाधारयुक्त वडा।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: मेलेगौँडा, मयाङ</li>
+              <li><i class="fa-solid fa-bridge"></i> विशेषता: दोभान, नयाँ बस्ती</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ६', 'मुख्य स्थानहरू: मेलेगौँडा, मयाङ।\nविशेषता: म्याग्दे र सेतीको आसपास, शैक्षिक तथा सामाजिक पूर्वाधार।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 7 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/83p1XbT.jpg" alt="वडा ७ कार्यालय">
+            <span class="ward-badge">वडा नं. ७</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ७ (सेपानी)</h5>
+            <p>फलफूल तथा तरकारी खेतीका लागि प्रख्यात पहाडी क्षेत्र।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: सेपानी, अर्चले</li>
+              <li><i class="fa-solid fa-apple-whole"></i> विशेषता: सुन्तला र व्यावसायिक खेती</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ७', 'मुख्य स्थानहरू: सेपानी, अर्चले।\nविशेषता: अर्गानिक खेती, सुन्तला पकेट क्षेत्र र स्वच्छ वातावरण।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 8 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/yU2K2X0.png" alt="वडा ८ कार्यालय">
+            <span class="ward-badge">वडा नं. ८</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ८ (काहुँशिवपुर)</h5>
+            <p>काहुँशिवपुरको शिव मन्दिर र दृश्यावलोकनका लागि प्रसिद्ध।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: काहुँशिवपुर, थुम्की</li>
+              <li><i class="fa-solid fa-place-of-worship"></i> विशेषता: धार्मिक पर्यटन, भ्यू-पोइन्ट</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ८', 'मुख्य स्थानहरू: काहुँशिवपुर, थुम्की।\nविशेषता: हिमशृङ्खलाको मनोरम दृश्य, प्रसिद्ध शिव मन्दिर र पर्यटन।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+        <!-- Ward 9 -->
+        <div class="ward-card">
+          <div class="ward-img">
+            <img src="https://i.imgur.com/3ZkZ3b9.jpg" alt="वडा ९ कार्यालय">
+            <span class="ward-badge">वडा नं. ९</span>
+          </div>
+          <div class="ward-body">
+            <h5>वडा नं. ९ (पाथरकोट)</h5>
+            <p>प्राकृतिक वनजङ्गल, जडीबुटी र जैविक विविधताले भरिपूर्ण।</p>
+            <ul class="ward-features">
+              <li><i class="fa-solid fa-location-dot"></i> मुख्य स्थान: पाथरकोट, मोहोरिया</li>
+              <li><i class="fa-solid fa-tree"></i> विशेषता: वनजङ्गल, जैविक विविधता</li>
+            </ul>
+            <button class="btn-details" onclick="openModal('वडा नं. ९', 'मुख्य स्थानहरू: पाथरकोट, मोहोरिया।\nविशेषता: जडीबुटी संकलन, प्राकृतिक जङ्गल र शान्त गाउँ।')">विस्तृत विवरण</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal for Details -->
+  <div class="modal" id="infoModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h4 id="modalTitle" style="font-size: 1.5rem; color: var(--secondary); margin-bottom: 15px;"></h4>
+      <p id="modalBody" style="font-size: 1.1rem; white-space: pre-line; color: var(--text-dark);"></p>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer id="contact">
+    <p><strong>भिमाद नगरपालिका कार्यालय</strong></p>
+    <p>तनहुँ, गण्डकी प्रदेश, नेपाल</p>
+    <p style="font-size: 0.85rem; margin-top: 15px; color: #64748b;">&copy; २०८३ भिमाद नगरपालिका | सर्वाधिकार सुरक्षित</p>
+  </footer>
+
+  <script>
+    // Live Nepali Clock Script
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      
+      hours = hours < 10 ? '०' + hours : hours;
+      minutes = minutes < 10 ? '०' + minutes : minutes;
+      seconds = seconds < 10 ? '०' + seconds : seconds;
+
+      document.getElementById('liveClock').innerText = `NST ${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Modal Functions
+    function openModal(title, body) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerText = body;
+      document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('infoModal').style.display = 'none';
+    }
+
+    // Close Modal on Outside Click
+    window.onclick = function(event) {
+      const modal = document.getElementById('infoModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
