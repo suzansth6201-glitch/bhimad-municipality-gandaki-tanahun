@@ -1,1572 +1,813 @@
 <!DOCTYPE html>
-<html lang="ne">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bhimad Digital Portal | Bhimad Municipality</title>
-
-<meta name="description" content="Bhimad Digital Portal — Bhimad Municipality, Tanahun, Gandaki Province, Nepal">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, "Noto Sans Devanagari", sans-serif;
-    background:#071415;
-    color:#f4ffff;
-    line-height:1.7;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(1180px,92%);
-    margin:auto;
-}
-
-/* ================= TOP BAR ================= */
-
-.topbar{
-    background:#031011;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    padding:8px 0;
-    font-size:13px;
-}
-
-.topbar-inner{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    color:#b7d0d0;
-}
-
-/* ================= NAVIGATION ================= */
-
-.navbar{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(4,18,19,.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.nav-inner{
-    min-height:76px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.brand-icon{
-    width:48px;
-    height:48px;
-    border-radius:15px;
-    display:grid;
-    place-items:center;
-    font-size:25px;
-    background:linear-gradient(135deg,#11d8bf,#087d76);
-    box-shadow:0 10px 35px rgba(0,210,190,.22);
-}
-
-.brand h1{
-    font-size:18px;
-    letter-spacing:.4px;
-}
-
-.brand small{
-    display:block;
-    color:#7fa3a3;
-    font-size:11px;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-
-.nav-links a{
-    padding:9px 13px;
-    border-radius:10px;
-    color:#bdd1d1;
-    font-size:14px;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:white;
-    background:rgba(255,255,255,.07);
-}
-
-.lang-btn{
-    border:1px solid rgba(47,224,204,.35);
-    background:rgba(14,145,132,.12);
-    color:#6ff4e2;
-    padding:8px 12px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:720px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 20% 25%,rgba(0,205,180,.18),transparent 30%),
-        radial-gradient(circle at 80% 20%,rgba(52,127,255,.12),transparent 28%),
-        linear-gradient(135deg,#061617 0%,#0a2525 48%,#071315 100%);
-}
-
-.hero:before{
-    content:"";
-    position:absolute;
-    width:650px;
-    height:650px;
-    border-radius:50%;
-    border:1px solid rgba(65,236,215,.08);
-    right:-230px;
-    top:-180px;
-}
-
-.hero:after{
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    border:1px solid rgba(65,236,215,.06);
-    right:-100px;
-    bottom:-220px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:60px;
-    align-items:center;
-    position:relative;
-    z-index:2;
-}
-
-.badge{
-    display:inline-flex;
-    padding:7px 13px;
-    border:1px solid rgba(68,234,214,.25);
-    background:rgba(27,176,159,.09);
-    color:#6ef5df;
-    border-radius:30px;
-    font-size:13px;
-    margin-bottom:20px;
-}
-
-.hero h2{
-    font-size:clamp(42px,6vw,76px);
-    line-height:1.04;
-    letter-spacing:-2px;
-    margin-bottom:20px;
-}
-
-.hero h2 span{
-    color:#42e7d0;
-}
-
-.hero p{
-    color:#b7cccc;
-    max-width:700px;
-    font-size:17px;
-}
-
-.hero-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:30px;
-}
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px 18px;
-    border-radius:13px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.05);
-    color:white;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
-    border-color:rgba(60,231,209,.4);
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,#19cdb7,#087e77);
-    border:0;
-    box-shadow:0 12px 35px rgba(14,197,177,.2);
-}
-
-/* ================= HERO VISUAL ================= */
-
-.hero-visual{
-    min-height:480px;
-    position:relative;
-    display:grid;
-    place-items:center;
-}
-
-.mountain{
-    width:420px;
-    height:300px;
-    position:relative;
-    clip-path:polygon(
-        0 100%,
-        18% 64%,
-        29% 78%,
-        48% 28%,
-        61% 58%,
-        75% 42%,
-        100% 100%
-    );
-    background:linear-gradient(145deg,#173c3d,#0a2425);
-    filter:drop-shadow(0 30px 35px rgba(0,0,0,.35));
-}
-
-.mountain:before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(145deg,
-        transparent 0 44%,
-        rgba(72,231,209,.15) 45% 47%,
-        transparent 48%);
-}
-
-.visual-card{
-    position:absolute;
-    padding:18px;
-    width:210px;
-    border:1px solid rgba(255,255,255,.1);
-    background:rgba(7,25,26,.72);
-    backdrop-filter:blur(18px);
-    border-radius:20px;
-    box-shadow:0 25px 70px rgba(0,0,0,.3);
-}
-
-.visual-card.one{
-    top:30px;
-    right:0;
-}
-
-.visual-card.two{
-    bottom:35px;
-    left:0;
-}
-
-.visual-card strong{
-    display:block;
-    font-size:25px;
-    color:#64efdc;
-}
-
-.visual-card small{
-    color:#9eb7b7;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    margin-top:40px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-}
-
-.stat{
-    padding:18px;
-    border:1px solid rgba(255,255,255,.08);
-    background:rgba(255,255,255,.035);
-    border-radius:16px;
-}
-
-.stat strong{
-    display:block;
-    font-size:24px;
-    color:#68efdc;
-}
-
-.stat span{
-    font-size:12px;
-    color:#8da9a9;
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-    padding:90px 0;
-}
-
-.section-head{
-    margin-bottom:38px;
-}
-
-.eyebrow{
-    color:#4ee7d2;
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:8px;
-}
-
-.section-head h2{
-    font-size:clamp(30px,4vw,48px);
-    line-height:1.15;
-}
-
-.section-head p{
-    max-width:720px;
-    margin-top:12px;
-    color:#9eb6b6;
-}
-
-/* ================= INTRO ================= */
-
-.intro-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.glass{
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-    );
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    padding:30px;
-    box-shadow:0 25px 70px rgba(0,0,0,.12);
-}
-
-.glass h3{
-    font-size:23px;
-    margin-bottom:12px;
-}
-
-.glass p{
-    color:#a9c0c0;
-}
-
-.fact-list{
-    display:grid;
-    gap:12px;
-    margin-top:20px;
-}
-
-.fact{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    padding:13px 0;
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.fact:last-child{
-    border-bottom:0;
-}
-
-.fact span{
-    color:#8ea9a9;
-}
-
-.fact strong{
-    color:#dffaf7;
-    text-align:right;
-}
-
-/* ================= WARDS ================= */
-
-.wards{
-    background:
-        linear-gradient(rgba(4,19,20,.94),rgba(4,19,20,.98));
-}
-
-.ward-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.ward-card{
-    position:relative;
-    overflow:hidden;
-    border-radius:22px;
-    border:1px solid rgba(255,255,255,.08);
-    background:#0b1e20;
-    transition:.35s;
-}
-
-.ward-card:hover{
-    transform:translateY(-7px);
-    border-color:rgba(65,231,211,.28);
-    box-shadow:0 25px 55px rgba(0,0,0,.25);
-}
-
-.photo-slot{
-    height:185px;
-    display:grid;
-    place-items:center;
-    background:
-        radial-gradient(circle at 50% 40%,rgba(43,204,185,.12),transparent 45%),
-        linear-gradient(135deg,#102d2e,#09191a);
-    color:#5e8585;
-    font-size:12px;
-    letter-spacing:1px;
-    text-align:center;
-}
-
-.photo-slot span{
-    display:block;
-    padding:9px 14px;
-    border:1px dashed rgba(103,229,211,.22);
-    border-radius:10px;
-}
-
-.ward-content{
-    padding:20px;
-}
-
-.ward-number{
-    display:inline-flex;
-    width:36px;
-    height:36px;
-    align-items:center;
-    justify-content:center;
-    border-radius:11px;
-    background:rgba(33,214,194,.1);
-    color:#59e8d5;
-    font-weight:bold;
-    margin-bottom:13px;
-}
-
-.ward-content h3{
-    font-size:21px;
-}
-
-.ward-content p{
-    color:#91abab;
-    font-size:14px;
-    margin:9px 0 17px;
-}
-
-.ward-meta{
-    display:flex;
-    justify-content:space-between;
-    gap:8px;
-    font-size:12px;
-    color:#779696;
-}
-
-/* ================= TOURISM ================= */
-
-.tourism-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.place{
-    min-height:350px;
-    padding:0;
-    overflow:hidden;
-}
-
-.place .photo-slot{
-    height:210px;
-}
-
-.place-content{
-    padding:22px;
-}
-
-.place-content h3{
-    font-size:21px;
-    margin-bottom:7px;
-}
-
-.place-content p{
-    color:#94abab;
-    font-size:14px;
-}
-
-/* ================= SERVICES ================= */
-
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-}
-
-.service{
-    padding:25px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    background:rgba(255,255,255,.035);
-    transition:.3s;
-}
-
-.service:hover{
-    transform:translateY(-5px);
-}
-
-.service-icon{
-    width:46px;
-    height:46px;
-    display:grid;
-    place-items:center;
-    border-radius:13px;
-    background:rgba(42,217,196,.1);
-    font-size:21px;
-    margin-bottom:15px;
-}
-
-.service h3{
-    font-size:17px;
-}
-
-.service p{
-    color:#849e9e;
-    font-size:13px;
-    margin-top:5px;
-}
-
-/* ================= MAP ================= */
-
-.map-box{
-    min-height:360px;
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,.08);
-    background:
-        linear-gradient(135deg,rgba(12,54,53,.7),rgba(6,22,24,.9));
-    display:grid;
-    place-items:center;
-    text-align:center;
-    padding:40px;
-}
-
-.map-inner{
-    max-width:550px;
-}
-
-.map-icon{
-    font-size:55px;
-    margin-bottom:12px;
-}
-
-.map-inner h3{
-    font-size:27px;
-}
-
-.map-inner p{
-    color:#91aaaa;
-    margin:8px 0 20px;
-}
-
-/* ================= CONTACT ================= */
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.contact-item{
-    display:flex;
-    gap:15px;
-    padding:16px 0;
-    border-bottom:1px solid rgba(255,255,255,.07);
-}
-
-.contact-item:last-child{
-    border-bottom:0;
-}
-
-.contact-icon{
-    width:42px;
-    height:42px;
-    display:grid;
-    place-items:center;
-    border-radius:12px;
-    background:rgba(49,220,201,.09);
-}
-
-.contact-item strong{
-    display:block;
-}
-
-.contact-item span{
-    color:#91aaaa;
-    font-size:14px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    background:#030d0e;
-    padding:45px 0 25px;
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:1.3fr 1fr 1fr;
-    gap:40px;
-}
-
-footer h3{
-    margin-bottom:12px;
-}
-
-footer p,
-footer li{
-    color:#7e9999;
-    font-size:13px;
-}
-
-footer ul{
-    list-style:none;
-}
-
-footer li{
-    margin:7px 0;
-}
-
-.footer-bottom{
-    margin-top:35px;
-    padding-top:18px;
-    border-top:1px solid rgba(255,255,255,.06);
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    color:#607878;
-    font-size:12px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
+<html class="scroll-smooth" lang="ne"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>भीमाद डिजिटल पोर्टल (Bhimad Digital Portal)</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            },
+            nepal: {
+              crimson: '#DC143C',
+              navy: '#003893'
+            }
+          },
+          fontFamily: {
+            sans: ['Mukta', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'card-sm': '0 2px 8px -2px rgba(15, 118, 110, 0.08), 0 1px 4px -1px rgba(0, 0, 0, 0.04)',
+            'card-md': '0 8px 20px -4px rgba(15, 118, 110, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.04)',
+            'bottom-nav': '0 -4px 20px rgba(0, 0, 0, 0.07)'
+          }
+        }
+      }
     }
-
-    .hero{
-        min-height:auto;
-        padding:75px 0;
+  </script>
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Mukta', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
-
-    .hero-grid{
-        grid-template-columns:1fr;
+    .text-balance {
+      text-wrap: balance;
     }
-
-    .hero-visual{
-        min-height:350px;
+    /* Hide scrollbars for clean app look */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
-
-    .stats{
-        grid-template-columns:repeat(2,1fr);
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
-
-    .intro-grid,
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .ward-grid,
-    .tourism-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .service-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:600px){
-
-    .topbar-inner{
-        justify-content:center;
-        text-align:center;
-    }
-
-    .brand h1{
-        font-size:15px;
-    }
-
-    .hero h2{
-        font-size:43px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .hero-visual{
-        min-height:300px;
-    }
-
-    .mountain{
-        width:290px;
-        height:210px;
-    }
-
-    .visual-card{
-        width:155px;
-        padding:13px;
-    }
-
-    .visual-card strong{
-        font-size:20px;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-    }
-
-    section{
-        padding:65px 0;
-    }
-
-    .ward-grid,
-    .tourism-grid,
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .glass{
-        padding:22px;
-    }
-}
-</style>
+  </style>
 </head>
-
-<body>
-
-<!-- TOP BAR -->
-<div class="topbar">
-    <div class="container topbar-inner">
-        <div>भीमाद नगरपालिका, तनहुँ | गण्डकी प्रदेश, नेपाल</div>
-        <div>Digital Information Portal</div>
-    </div>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex justify-center selection:bg-brand-500 selection:text-white">
+<!-- Mobile App Frame Container (Screen dimension standard ~390px - 425px) -->
+<div class="w-full max-w-[425px] bg-slate-50 min-h-screen flex flex-col relative pb-24 shadow-2xl border-x border-slate-200" id="app-container">
+<!-- BEGIN: PWA Install Banner -->
+<div class="bg-gradient-to-r from-brand-800 to-brand-700 text-white px-3 py-2 flex items-center justify-between text-xs transition-all duration-300 ease-in-out" id="pwa-install-banner">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center font-bold text-teal-200">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
 </div>
-
-<!-- NAVIGATION -->
-<nav class="navbar">
-    <div class="container nav-inner">
-
-        <a href="#" class="brand">
-            <div class="brand-icon">⛰</div>
-            <div>
-                <h1>Bhimad Digital Portal</h1>
-                <small>Bhimad • Tanahun • Nepal</small>
-            </div>
-        </a>
-
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">परिचय</a>
-            <a href="#wards">वडाहरू</a>
-            <a href="#tourism">पर्यटन</a>
-            <a href="#services">सेवाहरू</a>
-            <a href="#contact">सम्पर्क</a>
-        </div>
-
-        <button class="lang-btn" onclick="toggleLanguage()">नेपाली / EN</button>
-
-    </div>
-</nav>
-
-
-<!-- HERO -->
-<header class="hero" id="home">
-
-    <div class="container hero-grid">
-
-        <div>
-
-            <div class="badge">
-                ✦ Welcome to Bhimad
-            </div>
-
-            <h2>
-                प्रकृति, संस्कृति<br>
-                र <span>सम्भावनाको शहर</span>
-            </h2>
-
-            <p>
-                तनहुँको दक्षिणी क्षेत्रमा अवस्थित भीमाद नगरपालिका
-                प्राकृतिक सौन्दर्य, स्थानीय संस्कृति, धार्मिक तथा
-                पर्यटकीय सम्भावना र विविध भूगोलले चिनिएको क्षेत्र हो।
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#wards" class="btn btn-primary">
-                    ९ वटै वडा हेर्नुहोस् →
-                </a>
-
-                <a href="#tourism" class="btn">
-                    पर्यटन क्षेत्र
-                </a>
-            </div>
-
-            <div class="stats">
-
-                <div class="stat">
-                    <strong>129.29</strong>
-                    <span>वर्ग कि.मि. क्षेत्रफल</span>
-                </div>
-
-                <div class="stat">
-                    <strong>29,248</strong>
-                    <span>जनसंख्या · २०७८</span>
-                </div>
-
-                <div class="stat">
-                    <strong>9</strong>
-                    <span>वडा संख्या</span>
-                </div>
-
-                <div class="stat">
-                    <strong>341–1347m</strong>
-                    <span>उचाइ दायरा</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-visual">
-
-            <div class="mountain"></div>
-
-            <div class="visual-card one">
-                <strong>09</strong>
-                <small>स्थानीय वडा</small>
-            </div>
-
-            <div class="visual-card two">
-                <strong>∞</strong>
-                <small>प्राकृतिक तथा सांस्कृतिक सम्भावना</small>
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="flex flex-col">
+<span class="font-semibold leading-tight">भीमाद डिजिटल एप इन्स्टल गर्नुहोस्</span>
+<span class="text-[10px] text-teal-100">सजिलो पहुँच र सूचनाका लागि</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-2.5 py-1 rounded-full text-[11px] shadow-sm transition" id="pwa-install-btn">
+          इन्स्टल
+        </button>
+<button aria-label="बन्द गर्नुहोस्" class="text-teal-200 hover:text-white p-1" id="pwa-close-btn">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- END: PWA Install Banner -->
+<!-- BEGIN: Live Clock & Ticker Bar -->
+<div class="bg-brand-900 text-teal-100 px-3.5 py-1.5 text-[11px] flex justify-between items-center border-b border-brand-800">
+<!-- Live dynamic clock container -->
+<div class="flex items-center space-x-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-semibold text-white tracking-wide" id="live-time">१०:००:०० AM</span>
+<span class="text-teal-300">|</span>
+<span class="text-teal-200" id="nepali-date-label">आज: २०८१</span>
+</div>
+<div class="flex items-center space-x-2 text-[10px] font-medium bg-brand-800/80 px-2 py-0.5 rounded-full border border-teal-500/20">
+<span>🌤️ भीमाद: २४°C</span>
+</div>
+</div>
+<!-- END: Live Clock & Ticker Bar -->
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-2 flex items-center justify-between shadow-sm">
+<div class="flex items-center space-x-2.5">
+<!-- Official Municipal Emblem -->
+<div class="w-11 h-11 rounded-full bg-slate-50 p-0.5 border border-brand-500 flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+<img alt="भीमाद नगरपालिका छाप/लोगो" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1XE8XJ9QhoWnwr_9vxiceZFuEG_LQ5wHbQfdgUji65zNQO979_Eui_ogqfVdL2iIRtCeBPigx4uH5P7TTmqmRkRyDjTVX9u3tAQ2S7GTYmoeJ273aVqlX1a2eVvVQbDssBGdIqbW17yXbNXecLX50juwn-sU9UXtQttslRcxe5xnaEfOvtZyQ72z0gXjJ_hnT3Kzl2oOjsLcKekD7iuDEIr_rfAC_TASgZoOqjLoTLNqli5sXA1d6iBlETQ"/>
+</div>
+<div>
+<div class="flex items-center space-x-1">
+<h1 class="text-base font-black text-slate-900 leading-tight">भीमाद डिजिटल पोर्टल</h1>
+<span class="bg-red-100 text-nepal-crimson border border-red-200 text-[9px] font-bold px-1 rounded">आधिकारिक</span>
+</div>
+<p class="text-[11px] text-brand-700 font-medium leading-none">भीमाद नगरपालिका, तनहुँ | गण्डकी प्रदेश</p>
+</div>
+</div>
+<!-- Language Pill & Settings Icon -->
+<div class="flex items-center space-x-1.5">
+<button class="bg-brand-50 hover:bg-brand-100 text-brand-800 border border-brand-200 text-[11px] font-bold px-2 py-1 rounded-full flex items-center space-x-1 shadow-2xs" id="lang-toggle-btn">
+<span>नेपाली</span>
+<span class="text-slate-400">/</span>
+<span class="text-slate-500 text-[10px]">EN</span>
+</button>
+</div>
 </header>
-
-
-<!-- ABOUT -->
-<section id="about">
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">ABOUT BHIMAD</div>
-            <h2>भीमाद नगरपालिकाको परिचय</h2>
-            <p>
-                प्रशासनिक संरचना, भूगोल, जनसंख्या र स्थानीय पहिचानलाई
-                एउटै डिजिटल प्लेटफर्ममा प्रस्तुत गर्ने प्रयास।
+<!-- END: MainHeader -->
+<!-- Scrollable Main App Content -->
+<main class="flex-1 overflow-y-auto px-3.5 pt-3 space-y-4">
+<!-- BEGIN: Hero Valley Section -->
+<section class="relative rounded-2xl overflow-hidden shadow-card-md border border-brand-100 group" id="home-section">
+<!-- Hero Background Image (Bhimad and river panoramic view) -->
+<div class="h-56 w-full relative">
+<img alt="भीमाद उपत्यका र सेती नदी" class="w-full h-full object-cover object-center transform transition duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWkdWx2R7cz55uLNua8vXJFaa7Iw6mpbHvlRaw3O0L-sTDTSYBgEGGBrycsAC5ENdat6lHpAMH0pVIn2oiRJo9srThndRw0JC4SIOZaNbInMwS_OMLZRnTPAOIWL_IEQWQSLX6pX_ZzfvquwfFprmTDDrhzVT17ZRse8oLV85yf7WVrT1Eu3XFZlnPxwEGAkiJN6_EYcX4Tq9zBe6tjGWdq2zts5ImH0qD7xLrQWYsveR7AZn631QHfMZYTl_OpI5kIiI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/50 to-transparent"></div>
+<!-- Floating Badge -->
+<div class="absolute top-2.5 right-2.5 bg-black/40 backdrop-blur-md text-teal-300 border border-teal-300/30 text-[10px] px-2.5 py-0.5 rounded-full font-medium">
+            🏞️ सेती कोरिडोर
+          </div>
+<!-- Hero Content Overlay -->
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<span class="bg-brand-600/90 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md mb-1 inline-block">सुन्दर, समृद्ध भीमाद</span>
+<h2 class="text-lg font-black leading-tight text-white drop-shadow-sm">प्रकृति, संस्कृति र सम्भावनाको शहर — भीमाद</h2>
+<p class="text-xs text-slate-200 mt-0.5 line-clamp-1">पवित्र सेती नदीको काखमा अवस्थित ऐतिहासिक एवं पर्यटकीय उपत्यका</p>
+</div>
+</div>
+<!-- Municipal Key Statistics 2x2 Grid -->
+<div class="bg-white p-3 grid grid-cols-2 gap-2 border-t border-slate-100 text-xs">
+<div class="bg-brand-50/70 p-2 rounded-xl border border-brand-100/60">
+<span class="text-[10px] text-slate-500 block font-medium">कुल क्षेत्रफल</span>
+<span class="font-bold text-brand-900 text-sm">१२९.२९ <span class="text-[10px] font-normal">वर्ग कि.मि.</span></span>
+</div>
+<div class="bg-brand-50/70 p-2 rounded-xl border border-brand-100/60">
+<span class="text-[10px] text-slate-500 block font-medium">जनसंख्या (२०७८)</span>
+<span class="font-bold text-brand-900 text-sm">२९,२४८ <span class="text-[10px] font-normal">नागरिक</span></span>
+</div>
+<div class="bg-brand-50/70 p-2 rounded-xl border border-brand-100/60">
+<span class="text-[10px] text-slate-500 block font-medium">प्रशासनिक विभाजन</span>
+<span class="font-bold text-brand-900 text-sm">९ <span class="text-[10px] font-normal">वडाहरू</span></span>
+</div>
+<div class="bg-brand-50/70 p-2 rounded-xl border border-brand-100/60">
+<span class="text-[10px] text-slate-500 block font-medium">भौगोलिक उचाइ</span>
+<span class="font-bold text-brand-900 text-[11px] leading-tight block">३४१m (टुटुवा दोभान) - १३४७.०३m <span class="text-[9px] text-slate-500 font-normal">(कोटबाराही)</span></span>
+</div>
+</div>
+</section>
+<!-- END: Hero Valley Section -->
+<!-- BEGIN: Emergency Quick Actions -->
+<section class="bg-gradient-to-r from-red-500 to-rose-600 rounded-2xl p-3 text-white shadow-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
+<span class="font-extrabold text-sm tracking-wide">२४ घण्टे एम्बुलेन्स सेवा</span>
+</div>
+<p class="text-[11px] text-red-100">भीमाद नगर क्षेत्र आकस्मिक स्वास्थ्य सहायता</p>
+</div>
+<div class="flex space-x-1.5">
+<a class="bg-white text-red-600 font-bold px-2.5 py-1.5 rounded-xl text-xs flex items-center space-x-1 shadow hover:bg-red-50 transition active:scale-95" href="tel:9815193131">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 20 20">
+<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"></path>
+</svg>
+<span>कल गर्नुहोस्</span>
+</a>
+</div>
+</div>
+</section>
+<!-- END: Emergency Quick Actions -->
+<!-- BEGIN: About Section -->
+<section class="bg-white rounded-2xl p-4 shadow-card-sm border border-slate-200/80 space-y-3" id="about-section">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-5 bg-brand-600 rounded-full"></span>
+<h3 class="text-sm font-extrabold text-slate-900">नगरपालिकाको ऐतिहासिक परिचय</h3>
+</div>
+<span class="text-[10px] bg-brand-100 text-brand-800 px-2 py-0.5 rounded-full font-semibold">वि.सं. २०७३ फागुन २७</span>
+</div>
+<p class="text-xs leading-relaxed text-slate-600 text-justify">
+          नेपाल सरकारको संघीय पुनर्संरचना अनुसार साविकका <span class="font-semibold text-slate-800">भीमाद, किहुँ, अरुणोदय, माझकोट (१-८), र ऋषिङ रानीपोखरी (७ र ८)</span> गाउँ विकास समितिहरूलाई समायोजन गरी नेपाल राजपत्रमा सूचना प्रकाशित भई मिति <strong>२०७३ फागुन २७ गते</strong> भीमाद नगरपालिकाको विधिवत स्थापना भएको हो।
+        </p>
+<!-- Detailed Fact Tiles -->
+<div class="grid grid-cols-1 gap-2 pt-1">
+<!-- Name origin -->
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs">
+<h4 class="font-bold text-brand-800 flex items-center space-x-1 mb-0.5">
+<span>🏛️</span>
+<span>नामाकरणको रोचक पृष्ठभूमि:</span>
+</h4>
+<p class="text-slate-600 text-[11px] leading-relaxed">
+              महाभारत कालमा भीमसेनले सेती नदीमा बाँध बाँधी जल संरक्षण गरेको लोकविश्वासका आधारमा <strong>'भीमबाँध'</strong> भनिन्थ्यो। यही शब्द अप्रभंश हुँदै कालान्तरमा <strong>'भीमाद'</strong> नामाकरण भएको मानिन्छ।
             </p>
-        </div>
-
-
-        <div class="intro-grid">
-
-            <div class="glass">
-
-                <h3>भीमाद — छोटो परिचय</h3>
-
-                <p>
-                    भीमाद नगरपालिका तनहुँ जिल्लामा पर्ने स्थानीय तह हो।
-                    नेपाल राजपत्रमा प्रकाशित संरचनाअनुसार वि.सं. २०७३
-                    फागुन २७ गते नगरपालिका स्थापना भएको हो र यसमा ९ वटा
-                    वडा रहेका छन्।
-                </p>
-
-                <p style="margin-top:15px;">
-                    नगरपालिकाको नामसँग सम्बन्धित स्थानीय जनश्रुतिमा
-                    महाभारतका भीमसेनसँग जोडिएको “भीमबाँध” हुँदै
-                    “भीमाद” नाम रहन गएको उल्लेख पाइन्छ। यसलाई
-                    स्थानीय जनश्रुति/परम्परागत कथनका रूपमा बुझिन्छ।
-                </p>
-
-            </div>
-
-
-            <div class="glass">
-
-                <h3>मुख्य तथ्यहरू</h3>
-
-                <div class="fact-list">
-
-                    <div class="fact">
-                        <span>क्षेत्रफल</span>
-                        <strong>129.29 sq. km.</strong>
-                    </div>
-
-                    <div class="fact">
-                        <span>जनसंख्या</span>
-                        <strong>29,248 · २०७८</strong>
-                    </div>
-
-                    <div class="fact">
-                        <span>सबैभन्दा कम उचाइ</span>
-                        <strong>341m · टुटुवा</strong>
-                    </div>
-
-                    <div class="fact">
-                        <span>सबैभन्दा बढी उचाइ</span>
-                        <strong>1347.03m · कोटबाराही</strong>
-                    </div>
-
-                    <div class="fact">
-                        <span>वडा संख्या</span>
-                        <strong>९</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+<!-- Geographical Boundaries -->
+<div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs">
+<h4 class="font-bold text-brand-800 flex items-center space-x-1 mb-1">
+<span>🧭</span>
+<span>चारकिल्ला तथा सिमानाहरू:</span>
+</h4>
+<div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600">
+<div class="bg-white p-1.5 rounded-lg border border-slate-100">
+<strong class="text-slate-900 block">पूर्व:</strong> म्याग्दे र ऋषिङ गाउँपालिका
+              </div>
+<div class="bg-white p-1.5 rounded-lg border border-slate-100">
+<strong class="text-slate-900 block">पश्चिम:</strong> स्याङ्जा जिल्ला (पुतलीबजार/हरिनास)
+              </div>
+<div class="bg-white p-1.5 rounded-lg border border-slate-100">
+<strong class="text-slate-900 block">उत्तर:</strong> शुक्लागण्डकी नगरपालिका
+              </div>
+<div class="bg-white p-1.5 rounded-lg border border-slate-100">
+<strong class="text-slate-900 block">दक्षिण:</strong> घिरिङ गाउँपालिका
+              </div>
+</div>
+</div>
+</div>
 </section>
-
-
-<!-- WARDS -->
-<section class="wards" id="wards">
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">WARD DIRECTORY</div>
-            <h2>भीमादका ९ वटै वडा</h2>
-            <p>
-                प्रत्येक वडाको प्रशासनिक परिचय, क्षेत्रफल, जनसंख्या
-                र फोटो राख्न मिल्ने स्थानसहित।
-            </p>
-        </div>
-
-
-        <div class="ward-grid" id="wardGrid"></div>
-
-    </div>
-
+<!-- END: About Section -->
+<!-- BEGIN: Official Municipal Map & Distance Chart -->
+<section class="bg-white rounded-2xl p-4 shadow-card-sm border border-slate-200/80 space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-5 bg-brand-600 rounded-full"></span>
+<h3 class="text-sm font-extrabold text-slate-900">आधिकारिक वडा नक्सा तथा पहुँच</h3>
+</div>
+<span class="text-[10px] text-slate-500 font-medium">९ वटै वडा संरचना</span>
+</div>
+<!-- Official Map Image with Click Zoom Modal Trigger -->
+<div class="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
+<img alt="भीमाद नगरपालिका वडा विभाजन नक्सा" class="w-full h-52 object-contain bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3UUgRo--Uir4fGYD5Y59W3G_GGJ75gfhW716ZTQ8c_seK4-W3DBzQ7WcVLs_Pd8OFp-e4Q8eYVFqX9hOTWZp7ZFwur854VpXHtHBXByM2HjhVY8vaQLA6z7TboT-vq-qYlnM5ruB4vITz65Sgy7lY7iScgmZXrt3szBjUjoNlzXL1THn_e3yvI5UDDn6959nCg6uGsItT0KgTEV_A_Jz33M7kBp3aH9rX3QtKrwK0N8P3KXo63i_vq7A0AFomka6oQR8"/>
+<div class="absolute bottom-2 right-2 bg-slate-900/80 backdrop-blur-xs text-white text-[10px] px-2 py-1 rounded-md flex items-center space-x-1 shadow-sm">
+<svg class="w-3 h-3 text-teal-300" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>विस्तृत नक्सा हेर्नुहोस्</span>
+</div>
+</div>
+<!-- Distance Table From Bhimad Center -->
+<div class="pt-1">
+<h4 class="text-xs font-bold text-slate-800 mb-1 flex items-center justify-between">
+<span>भीमाद बजार (केन्द्र) देखि वडा कार्यालय दूरी:</span>
+<span class="text-[10px] font-normal text-slate-500">आधिकारिक विवरण</span>
+</h4>
+<div class="overflow-x-auto text-[11px] rounded-xl border border-slate-200">
+<table class="w-full text-left border-collapse">
+<thead class="bg-brand-50 text-brand-900 font-semibold border-b border-slate-200">
+<tr>
+<th class="p-1.5">वडा</th>
+<th class="p-1.5">स्थान / साविक क्षेत्र</th>
+<th class="p-1.5">दूरी</th>
+<th class="p-1.5 text-right">सडक अवस्था</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 bg-white">
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा १</td>
+<td class="p-1.5">काहुले / किहुँ</td>
+<td class="p-1.5 font-medium">करिब ६.५ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">मोटरबाटो</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा २</td>
+<td class="p-1.5">टेक्रे / साविक अरुणोदय</td>
+<td class="p-1.5 font-medium">करिब ८ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">ग्रामीण मोटरबाटो</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ३</td>
+<td class="p-1.5">खेक्रेटार / साविक माझकोट</td>
+<td class="p-1.5 font-medium">करिब ४.५ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">पक्की/ग्राभेल</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ४</td>
+<td class="p-1.5">सिंचित / साविक माझकोट</td>
+<td class="p-1.5 font-medium">करिब ९.५ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">ग्रामीण सडक</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ५</td>
+<td class="p-1.5">ऋषिङ रानीपोखरी / मिर्छुलुङ क्षेत्र</td>
+<td class="p-1.5 font-medium">करिब ११ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">कच्ची/ग्राभेल</td>
+</tr>
+<tr class="hover:bg-brand-50/50 bg-emerald-50/30">
+<td class="p-1.5 font-bold text-brand-700">वडा ६</td>
+<td class="p-1.5 font-bold">भीमाद बजार (नगरपालिका केन्द्र)</td>
+<td class="p-1.5 font-medium">० कि.मि.</td>
+<td class="p-1.5 text-right text-emerald-700 font-semibold">नगरपालिका केन्द्रमै</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ७</td>
+<td class="p-1.5">पोखरीछाप</td>
+<td class="p-1.5 font-medium">करिब ५.५ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">पक्की/ग्राभेल</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ८</td>
+<td class="p-1.5">अरौंदी</td>
+<td class="p-1.5 font-medium">करिब ३.५ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">कालोपत्रे/ग्राभेल</td>
+</tr>
+<tr class="hover:bg-slate-50">
+<td class="p-1.5 font-bold text-brand-700">वडा ९</td>
+<td class="p-1.5">पाथर्दी / मोहोरिया</td>
+<td class="p-1.5 font-medium">करिब ७ कि.मि.</td>
+<td class="p-1.5 text-right text-slate-600">पहाडी सडक</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[10px] text-slate-500 mt-1.5 bg-slate-50 p-2 rounded-lg border border-slate-200">
+          ⚠️ <strong>नोट:</strong> पहाडी कच्ची तथा पक्की सडकको अवस्था अनुसार यात्रा समय फरक पर्न सक्दछ।
+        </p>
+</div>
 </section>
-
-
-<!-- TOURISM -->
-<section id="tourism">
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">EXPLORE BHIMAD</div>
-            <h2>पर्यटन तथा स्थानीय सम्पदा</h2>
-            <p>
-                भीमाद क्षेत्रमा रहेका प्राकृतिक, धार्मिक तथा सांस्कृतिक
-                सम्भावनालाई डिजिटल रूपमा चिनाउने स्थान।
-            </p>
-        </div>
-
-
-        <div class="tourism-grid">
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>सिद्ध गुफा</h3>
-                    <p>
-                        वडा नं. ९ क्षेत्रमा रहेको सिद्ध गुफा भीमादको
-                        प्रमुख प्राकृतिक तथा धार्मिक पर्यटकीय सम्पदामध्ये
-                        एक हो।
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>ऐतिहासिक झोलुङ्गे पुल</h3>
-                    <p>
-                        सेती नदी आसपासको पुरानो यातायात तथा स्थानीय
-                        इतिहाससँग जोडिएको महत्वपूर्ण सम्पदा।
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>कोटबाराही क्षेत्र</h3>
-                    <p>
-                        धार्मिक आस्था र उच्च भूभागको प्राकृतिक दृश्यका
-                        कारण स्थानीय पर्यटन सम्भावना बोकेको क्षेत्र।
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>ईर्लुम झरना</h3>
-                    <p>
-                        प्राकृतिक पानीको बहाव तथा वरपरको भू-दृश्यसँग
-                        जोडिएको स्थानीय आकर्षण।
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>चुलीडाँडा</h3>
-                    <p>
-                        स्थानीय भू-दृश्य तथा प्राकृतिक वातावरणको
-                        अवलोकनका लागि सम्भावना भएको क्षेत्र।
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="glass place">
-
-                <div class="photo-slot">
-                    <span>REAL PHOTO SLOT<br>यहाँ वास्तविक फोटो राख्नुहोस्</span>
-                </div>
-
-                <div class="place-content">
-                    <h3>धार्मिक तथा सांस्कृतिक सम्पदा</h3>
-                    <p>
-                        शिव मन्दिर, कोटबाराही, जौपानी बराहलगायत
-                        स्थानीय धार्मिक तथा सांस्कृतिक स्थलहरू।
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<!-- END: Official Municipal Map & Distance Chart -->
+<!-- BEGIN: Ward Directory (All 9 Wards) -->
+<section class="space-y-3" id="wards-section">
+<!-- Section Header with Search Filter -->
+<div class="flex items-center justify-between pt-1">
+<div>
+<h3 class="text-sm font-extrabold text-slate-900 flex items-center space-x-1.5">
+<span class="w-1.5 h-5 bg-brand-600 rounded-full"></span>
+<span>नगरका ९ वटै वडा विवरण</span>
+</h3>
+<p class="text-[11px] text-slate-500">कार्यालय तस्बिर, पर्यटकीय स्थल र पुग्ने बाटो</p>
+</div>
+</div>
+<!-- Quick Filter Input for Wards -->
+<div class="relative">
+<input class="w-full text-xs pl-8 pr-3 py-2 bg-white rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition shadow-2xs" id="ward-search" placeholder="वडा नम्बर वा स्थान खोज्नुहोस् (उदा: १, काहुले, सिद्ध गुफा)..." type="text"/>
+<svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Ward Cards List -->
+<div class="space-y-3.5" id="wards-container">
+<!-- WARD 1 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="१ काहुले किहुँ गजरकोट">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं १ कार्यालय काहुले" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRJI01yNMu9MLitrw_BVsfn6GEVnjnnIcXtPKuONBoZO_Bb6Ts8gNJ3M14CLhy20vy1qgT_dmayypt7aFgWh9njX20hyiQeFcbpvsqaoGBP-jtMHGqxhpQyHVrUivVXg3Y1KIJoMQTo0AjTnBUKQTVB8-QCCTHcnuPmQC0W2NuCnnBlbH3sljTCK7WxZ1aY8Owny2TKS6lie7bNWGRa9qtOR98IPHi3_6HDCbhXq2Kg0eOyxX1LnoQ2i0roodiyveHkg"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. १
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 काहुले (साविक किहुँ र गजरकोट)
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: काहुले</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ६.५ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> किहुँकोट, ऐतिहासिक कोटगढी, मनोरम फाँट।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद बजारबाट काहुले मोटरबाटो (करिब ६.५ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 2 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="२ टेक्रे अरुणोदय">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं २ कार्यालय टेक्रे" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMiO4ejTT4LPoUrPp4t-pB0VeI43R7qG67dxGPtbMiO2c6eElHb3CHzFtc6u7xmcpZfFFLWTzWu9_dO7PK09V2NytzY6OVau92WBPA-VLmmHgenlg0728GZ3qmpnhJVmmSpfpSbaYGQw-oP7ik15nbDu7dewsuBlu5iXk7E_Rx3T7d8VYr2XPAOVQCJkUcicgoXCFge2ZldaPelPE3qkq11nezEhL0iLlc7yPGrUPlOouqMl4RSnU3eLV55wWzffejSGI"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. २
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 टेक्रे (साविक अरुणोदय)
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: टेक्रे</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ८ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> अरुणोदय डाँडा, ग्रामीण पदमार्ग, सुन्तला बगैंचा।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद-टेक्रे ग्रामीण सडक खण्ड (करिब ८ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 3 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="३ खेक्रेटार माझकोट क्याङ्दी खोला">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं ३ कार्यालय खेक्रेटार" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1QkVl4GKCGa6g7ANJsMM0ZIIREG8qY3vN115lnmP3pFnt1Kgmb4c0tsGliSuOsQGMwy0dLr3C-H1Z5TWbCL15eNGPs1A_qCogRMt0liee5HGiwpj_S88sDqbg1V_sWNT67Exd4fVKtlJ2r7tyzl9NVgKvnYfImCZhvrWTAKU08P7_rbj76uG43IrCqmhBB0DLmASNzVDoYXJZtLTTgjIe_aLLYGzzn06qz7PUkQNoDtNdtUTZ4xkKd1H14qhMuDs_WoI"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. ३
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 खेक्रेटार (साविक माझकोट)
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: खेक्रेटार</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ४.५ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> क्याङ्दी खोला किनार, हरियाली फाँट, जल मनोरञ्जन।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद बजारबाट खेक्रेटार सडक (करिब ४.५ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 4 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="४ सिंचित माझकोट चियाबारी">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं ४ कार्यालय सिंचित" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMDY4jFBMN6xzTYqmA-GM_3rY6tn0-Bokz_nCl22NJSUxjLwKZ7DJNCJuyQuFP9cYyOS5ZCGrsDh7vEsyGQYZqwaFKGrPtTmPp-joi8qNM9GS2c7FEU50HpusykxYyZXMmn39UaKn9mxKYVTaZwXtbBjJOGUH9TXwCHB8XSbeBg7P_Bg3-1-uPt1sQEB5LqGIFZ7XHuB-E_YSAZwtBMIFWmP5Whelci3Hr2z_0mw-O3vZizWeCFeK3YCqz9RXgdgZqnas"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. ४
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 सिंचित (साविक माझकोट)
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: सिंचित</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ९.५ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> सिंचितकोट, प्राकृतिक चियाबारी सम्भावित डाँडा।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद-माझकोट ग्रामीण सडक (करिब ९.५ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 5 (No Photo - Elegant Placeholder Box) -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="५ ऋषिङ रानीपोखरी मिर्छुलुङ क्षेत्र बुडुवाफाँट">
+<div class="h-44 w-full relative bg-gradient-to-br from-teal-800 to-slate-800 flex flex-col items-center justify-center text-white px-4 text-center">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-1 text-teal-300">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-bold text-teal-200">फोटो उपलब्ध भएपछि अपडेट गरिनेछ</span>
+<span class="text-[10px] text-slate-300 mt-0.5">५ नं. वडा कार्यालय भवन तस्बिर संकलन कार्य भइरहेको</span>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. ५
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 ऋषिङ रानीपोखरी / मिर्छुलुङ क्षेत्र
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: ऋषिङ रानीपोखरी / मिर्छुलुङ</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ११ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> प्राकृतिक सौन्दर्य, कृषि क्षेत्र, रानीपोखरी सिमाना।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमादबाट ग्रामीण मोटरबाटो (करिब ११ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 6 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-brand-300 shadow-card-sm ring-1 ring-brand-400/40" data-ward="६ भीमाद बजार मुख्य केन्द्र सेती नदी">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं ६ कार्यालय भीमाद बजार" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA840lSKnO7CI3Vlj_JRN0NPCBflXBEmXz9NwWX_Kkmh-YO4p9ZFJPePDxg_KZ_On8OLjrEVvbZ9ouhGEq2hfS_lL33_X2tQFydh_FuJd_TuBLw9MiI2fqCVdZpm1iwxRctmDo5V6zNXFw26An14vXF78-1a9IMDE_E55Kr3bTk1ASdrGSqX5rG_FWl1J-n7mfwcQegEU1mhBedo33s4lBtsT15CCUZIQ0GbY8x7d_uSA-QAe6DW3tFh2XkJ3GgeoeYiTQ"/>
+<div class="absolute top-2 left-2 bg-nepal-crimson text-white font-black text-xs px-2.5 py-1 rounded-lg shadow flex items-center space-x-1">
+<span>वडा नं. ६</span>
+<span class="text-[10px] font-normal">| मुख्य केन्द्र</span>
+</div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 भीमाद बजार (नगरपालिका केन्द्र)
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-900">वडा कार्यालय: भीमाद बजार</span>
+<span class="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">० कि.मि. (केन्द्रमै)</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> भीमाद बजार, सेती नदी कोरिडोर, परम्परागत हाटबजार।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> मुख्य पक्की सडक, पृथ्वी राजमार्गको खैरेनीटारबाट सिधै पक्की पहुँच।</p>
+</div>
+</div>
+</article>
+<!-- WARD 7 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="७ पोखरीछाप डाँडा ताल"><div class="h-52 w-full relative bg-slate-100"><img alt="हुक्का डाँडा (भाइरल पर्यटकीय स्थल) - भीमाद ७" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIehebJKnWX-50DjlyU3RM8lfdj5Dk7fucci7YBiUVXPacHSodw7j96BwVlInEUKbQ1mrkZF1hdEFIUfwUSXi3hqpC3nC-zKuJOOBw3qYa-tonpEhodorUPHwHfUrj79L5vgy0q41UlwODtWaFGFnvyiMdLiklwHxgiIYiCCwWwslswvbdnzQw-bOsTiJr-kqlSjel0ufAvHJoMlHrTDDa9O2vKF1-fOEbLRhwHYglfppK9fTU4WBMBvYBhiBypuvK40o"/><div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow flex items-center space-x-1"><span>वडा नं. ७</span><span class="text-[10px] font-normal">| पोखरीछाप</span></div><div class="absolute top-2 right-2 bg-rose-600/90 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-sm">🔥 भाइरल गन्तव्य</div><span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">📍 हुक्का डाँडा (Hukka Danda)</span></div><div class="p-3 space-y-2"><div class="flex items-center justify-between text-xs"><span class="font-bold text-slate-800">वडा कार्यालय: पोखरीछाप</span><span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ५.५ कि.मि.</span></div><div class="bg-amber-50 p-2 rounded-xl border border-amber-200/70 text-[11px] text-amber-900 leading-tight"><p class="font-semibold flex items-center gap-1"><span class="text-xs">✨</span> हुक्का डाँडा (वडा नं. ७ को चर्चित भाइरल गन्तव्य)</p><p class="text-[10px] text-slate-600 mt-0.5">नोट: ७ नं. वडा कार्यालय भवनको फोटो उपलब्ध भएपछि अपडेट गरिनेछ / हाल हुक्का डाँडाको मनोरम दृश्य।</p></div><div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2"><p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> हुक्का डाँडा, पोखरीछाप हरियाली डाँडा तथा बस्ती, मनोरम हिमाल दर्शन, भ्यू प्वाइन्ट।</p><p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद-पोखरीछाप सडक खण्ड हुँदै हुक्का डाँडा (करिब ५.५ कि.मि.)।</p></div></div></article>
+<!-- WARD 8 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="८ अरौंदी होमस्टे खोला">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं ८ कार्यालय अरौंदी" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzjJKAgBTLbeRjU6tBFhbTgNyxfaMg_GWCdkuyq79f2QmmGPJNkb0jTbWUvcVH1BRUD5GM1gaNGoDi5F0AqODQkwu8GffZCvH8z2e5Vdi4qQDk2ASfOMUHJf_H2LpchMrE-xmb_MU2YpD3pAGKZD0hylEIUAunD25ke6sxKyDGhTNtREJ3lfgnKb6weOyAfKUXSW8eKm_Qjerv63bKZld1h1n8b3-k1PpmHS9yeqYUO2X3PeaYzKx6dI0KrHsMebZK6Hw"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. ८
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 अरौंदी
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: अरौंदी</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ३.५ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> अरौंदी खोला, ग्रामीण होमस्टे क्षेत्र, माछापालन पोखरी।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद बजारबाट अरौंदी सडक (करिब ३.५ कि.मि.)।</p>
+</div>
+</div>
+</article>
+<!-- WARD 9 -->
+<article class="ward-card bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-card-sm transition duration-300 hover:border-brand-300" data-ward="९ पाथर्दी मोहोरिया रिठ्ठाभञ्ज्याङ सिद्ध गुफा झरना">
+<div class="h-44 w-full relative bg-slate-100">
+<img alt="वडा नं ९ कार्यालय पाथर्दी मोहोरिया" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADPv7O2DSWPuvvkxFZrqLPQNwVntx1VFGA8JOjrvfOpLnWxMTRDZfTOva5IJ524uu_7hWMlrpFbsPj32nvyY3c-0CVozzJ7RPGiRFceVfum8p_bqlp_xMHQRjv5_sFtrkTOF_BUOazIyDCcaCK93v-88OzztjolFNQbNRaVIMvZd-3DcJ5qorMwve058Np7fgXUSSGLbekz4y180MlWDQiERWT2wdVJN_fygg6rLGzQ82DE8EQhB_bRRRidRPbhwlkIw0"/>
+<div class="absolute top-2 left-2 bg-brand-800 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
+                वडा नं. ९
+              </div>
+<span class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded font-medium">
+                📍 पाथर्दी / मोहोरिया
+              </span>
+</div>
+<div class="p-3 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800">वडा कार्यालय: पाथर्दी / मोहोरिया</span>
+<span class="text-[11px] text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full font-semibold">दूरी: करिब ७ कि.मि.</span>
+</div>
+<div class="space-y-1 text-xs text-slate-600 border-t border-slate-100 pt-2">
+<p><strong class="text-slate-800">🌄 घुम्नलायक स्थलहरू:</strong> प्रसिद्ध सिद्ध गुफा परिसर, ईर्लुम झरना, जौपानी बराह मन्दिर।</p>
+<p><strong class="text-slate-800">🚗 पुग्ने बाटो:</strong> भीमाद-पाथर्दी/मोहोरिया पहाडी सडक (करिब ७ कि.मि.)।</p>
+</div>
+</div>
+</article>
+</div>
 </section>
-
-
-<!-- SERVICES -->
-<section id="services">
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">DIGITAL SERVICES</div>
-            <h2>महत्वपूर्ण सेवाहरू</h2>
-            <p>
-                नागरिक तथा आगन्तुकका लागि उपयोगी सरकारी तथा डिजिटल
-                स्रोतहरूमा छिटो पहुँच।
-            </p>
-        </div>
-
-
-        <div class="service-grid">
-
-            <a class="service" href="https://bhimadmun.gov.np/ward-offices" target="_blank">
-                <div class="service-icon">🏛️</div>
-                <h3>वडा कार्यालय</h3>
-                <p>९ वटै वडा कार्यालयसम्बन्धी जानकारी</p>
-            </a>
-
-            <a class="service" href="https://bhimadmun.gov.np/publication" target="_blank">
-                <div class="service-icon">📚</div>
-                <h3>प्रकाशन</h3>
-                <p>सूचना, प्रतिवेदन तथा प्रकाशनहरू</p>
-            </a>
-
-            <a class="service" href="https://bhimadmun.gov.np/municipal-decision" target="_blank">
-                <div class="service-icon">📋</div>
-                <h3>नगरपालिका निर्णय</h3>
-                <p>नगरपालिकाका निर्णय तथा अभिलेख</p>
-            </a>
-
-            <a class="service" href="https://bhimadmun.gov.np/" target="_blank">
-                <div class="service-icon">🌐</div>
-                <h3>आधिकारिक वेबसाइट</h3>
-                <p>भीमाद नगरपालिकाको आधिकारिक पोर्टल</p>
-            </a>
-
-        </div>
-
-    </div>
-
+<!-- END: Ward Directory -->
+<!-- BEGIN: Tourism & Heritage Highlights -->
+<section class="bg-white rounded-2xl p-4 shadow-card-sm border border-slate-200/80 space-y-3" id="tourism-section">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-5 bg-brand-600 rounded-full"></span>
+<h3 class="text-sm font-extrabold text-slate-900">प्रमुख पर्यटकीय तथा सम्पदा स्थलहरू</h3>
+</div>
+<span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">पर्यटन गन्तव्य</span>
+</div>
+<div class="grid grid-cols-1 gap-3 pt-1"><div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50"><div class="h-48 w-full relative"><img alt="भीमाद उपत्यका र अन्नपूर्ण हिमशृङ्खलाको मनोरम दृश्य" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv4FuCIxXng9Pc5PsZg65cLwmxX1SVeBSRinRZmG8n_QhXXYkfB_FKFG2e0hPKpFvmw0dvQyvbcHQq7JAdK7QRhNtnCeCVWzA9bWPNxTeM4Ha4fms_1ctTBt_Qi_xgF5zeBJOsj0u-uWc6h9k6b54d8NVKiAOTn4IB9mf8-QlX9eNxRENmej-S-US0i6WHgGs3dEk7WUTXuI4S5x9buORhhMTvbXJ-5JK7bHUFrdc0gnLusjdm9h66NW5V-s73wxLDLbo"/><div class="absolute top-2 left-2 bg-brand-900/80 backdrop-blur-xs text-teal-200 text-[10px] px-2.5 py-0.5 rounded-full font-semibold border border-teal-400/30">🏔️ मनोरम हिमशृङ्खला</div><span class="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs font-semibold">भीमाद र पृष्ठभूमिमा हिमाल (Valley &amp; Himalayas)</span></div><div class="p-2.5 text-xs text-slate-600 space-y-1"><h4 class="font-bold text-slate-900 text-[13px]">भीमाद उपत्यका र अन्नपूर्ण हिमशृङ्खला दर्शन</h4><p class="leading-relaxed text-[11px]">भीमादका अग्ला डाँडाहरूबाट देखिने हिउँले ढाकिएका सेता हिमशृङ्खला र हरियाली उपत्यकाको संगम। यहाँबाट धौलागिरि तथा अन्नपूर्ण हिमशिखरको स्पष्ट अवलोकन गर्न सकिन्छ।</p></div></div>
+<!-- Spot 1: Rock Garden -->
+<div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
+<div class="h-44 w-full relative">
+<img alt="भीमाद रक गार्डेन" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDux-CLpS-HNMZqv4MvWx9i3aayvpV1docdM7D6KqQCxMENx_u24_e9jY28fUN89wVv--EaDdwom2mT-v1qbs9C2btJFzhQAH6__kY-0kdUs17YUmkuAr1y5frAnCmWFivvqbuzkf9XZm9bQEYPOuHfNBBvCAYD3BpehMv80asIjj1ajgR2udrMgC_tso2rL1poIEP2ZprKEfZj72LWHO6wuzhSomXK0nc5HVmzSbMGfkuTf-HfIklyR04IFZrl2Y8Jg4E"/>
+<span class="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs font-semibold">
+                🪨 रक गार्डेन (Rock Garden)
+              </span>
+</div>
+<div class="p-2.5 text-xs text-slate-600 space-y-1">
+<h4 class="font-bold text-slate-900 text-[13px]">प्राकृतिक चुनढुङ्गाको अनौठो संरचना</h4>
+<p class="leading-relaxed text-[11px]">
+                भीमाद नगरपालिकाभित्र हालै पहिचान तथा प्रवर्द्धन गरिएको यो क्षेत्र अनौठा प्राकृतिक शिलाहरूको अनुपम बगैंचा हो। यहाँबाट चारैतिरका मनोरम पहाडी दृश्य देखिन्छ।
+              </p>
+</div>
+</div>
+<!-- Spot 2: Siddha Gufa -->
+<div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
+<div class="h-44 w-full relative">
+<img alt="सिद्ध गुफा प्रवेशद्वार" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U9osewzPtF11UZxtHhYSizdaaOFv-YdihiC0msdR7Q_-qDLE1dCCOGSm800e9FPovKKyMcMEbenWOkyBW6fdRgMl2SH4BjjOyHNQAHAkrx-TUKCxMC-pMxpmc0W04NKZrsfua-IQVqRqouxf4SX4ZUQcUdEJ_1syh-w7f18w3qYxRPnsxPR94IDZpEQeV2SrIp-XpQmxIdrHYMEz6uWweRvMSekq_yw5Rfuk-pW_48v7lDIPSprRe4ReTm"/>
+<span class="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs font-semibold">
+                🦇 सिद्ध गुफा (Siddha Cave)
+              </span>
+</div>
+<div class="p-2.5 text-xs text-slate-600 space-y-1">
+<h4 class="font-bold text-slate-900 text-[13px]">नेपालकै ठूला प्राकृतिक गुफामध्ये एक</h4>
+<p class="leading-relaxed text-[11px]">
+                चुनढुङ्गाले बनेको विशाल प्राकृतिक सुरुङ र गुफा परिसर जसमा हजारौं चमेरा र विभिन्न आकारका स्ट्यालाग्माइट शिलाहरू अवलोकन गर्न सकिन्छ।
+              </p>
+</div>
+</div>
+<!-- Spot 3: Local Culture & Heritage -->
+<div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">
+<div class="h-48 w-full relative">
+<img alt="नेपाली मौलिक परम्परागत पोशाक" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZhDt358L2ej_OTp9gWGBqADFUXJFbHGjJaVjXq_U8qmaWcgSUfN9MQykXF9x9njnH2MJcEax2Uiwu8ENZYKzwaMnY7VyhcKBdGb6c_cVfxiji0VCD9sXuYaIWdV_MIPytrZPSuunebRV11c-JUctUgLFQZNAwb9sBET2fDArErtNgaVQrk5fSLSWg4eb67LiH8s4ttye6-_ASdUWl6owreYDfeFtDgLWnW1H12D5wg37ljto1_v1tWvuOgqBG1k6e-4g"/>
+<span class="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs font-semibold">
+                🏺 मौलिक भेषभूषा तथा संस्कृति
+              </span>
+</div>
+<div class="p-2.5 text-xs text-slate-600 space-y-1">
+<h4 class="font-bold text-slate-900 text-[13px]">विविध जाति, भेषभूषा र भ्रातृत्व</h4>
+<p class="leading-relaxed text-[11px]">
+                मगर, नेवार, ब्राह्मण, क्षेत्री लगायत समुदायको साझा थलो। परम्परागत नेपाली दौरा-सुरुवाल, ढाका टोपी, कौरा, घाटु, चुड्का र स्थानीय मेला-पर्व यस क्षेत्रका जीवन्त सम्पदा हुन्।
+              </p>
+</div>
+</div>
+</div>
 </section>
-
-
-<!-- LOCATION -->
-<section>
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">LOCATION</div>
-            <h2>भीमाद कहाँ छ?</h2>
+<!-- END: Tourism & Heritage Highlights -->
+<!-- BEGIN: Contact & Helplines -->
+<section class="bg-white rounded-2xl p-4 shadow-card-sm border border-slate-200/80 space-y-3" id="contact-section">
+<div class="flex items-center space-x-2 border-b border-slate-100 pb-2">
+<span class="w-1.5 h-5 bg-brand-600 rounded-full"></span>
+<h3 class="text-sm font-extrabold text-slate-900">नगरपालिका कार्यालय सम्पर्क तथा सूचना</h3>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex items-start space-x-2 p-2 bg-slate-50 rounded-xl border border-slate-100">
+<span class="text-base">🏢</span>
+<div>
+<p class="font-bold text-slate-800">भीमाद नगरपालिका नगर कार्यपालिकाको कार्यालय</p>
+<p class="text-[11px] text-slate-600">भीमाद बजार, वडा नं ६, तनहुँ, गण्डकी प्रदेश, नेपाल</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-2 pt-1">
+<a class="flex items-center justify-between p-2.5 bg-brand-50 hover:bg-brand-100/70 border border-brand-200 rounded-xl transition" href="tel:065572436">
+<div class="flex items-center space-x-2">
+<span class="text-brand-700">📞</span>
+<div>
+<span class="text-[10px] text-slate-500 block leading-none">कार्यालय फोन:</span>
+<span class="font-bold text-brand-900 text-xs">०६५-५७२४३६</span>
+</div>
+</div>
+<span class="text-[10px] bg-brand-600 text-white px-2 py-0.5 rounded-md font-medium">कल गर्नुहोस्</span>
+</a>
+<a class="flex items-center justify-between p-2.5 bg-brand-50 hover:bg-brand-100/70 border border-brand-200 rounded-xl transition" href="mailto:bhimadmunicipality@gmail.com">
+<div class="flex items-center space-x-2">
+<span class="text-brand-700">✉️</span>
+<div>
+<span class="text-[10px] text-slate-500 block leading-none">ईमेल ठेगाना:</span>
+<span class="font-bold text-brand-900 text-xs">bhimadmunicipality@gmail.com</span>
+</div>
+</div>
+<span class="text-[10px] bg-brand-600 text-white px-2 py-0.5 rounded-md font-medium">ईमेल</span>
+</a>
+</div>
+<!-- Quick Helpline Badges -->
+<div class="pt-2">
+<span class="text-[11px] font-bold text-slate-700 block mb-1">आपतकालीन एम्बुलेन्स चालक सम्पर्क:</span>
+<div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
+<a class="bg-red-50 text-red-700 border border-red-200 py-1.5 rounded-lg font-bold" href="tel:9815193131">
+                9815193131
+              </a>
+<a class="bg-red-50 text-red-700 border border-red-200 py-1.5 rounded-lg font-bold" href="tel:9748219100">
+                9748219100
+              </a>
+<a class="bg-red-50 text-red-700 border border-red-200 py-1.5 rounded-lg font-bold" href="tel:9827186771">
+                9827186771
+              </a>
+</div>
+</div>
+</div>
+<!-- Footer Copyright -->
+<div class="text-center text-[10px] text-slate-400 pt-3 border-t border-slate-100">
+          © २०८१ भीमाद डिजिटल नगर पोर्टल | सम्पूर्ण अधिकार सुरक्षित।
         </div>
-
-
-        <div class="map-box">
-
-            <div class="map-inner">
-
-                <div class="map-icon">📍</div>
-
-                <h3>Bhimad Municipality</h3>
-
-                <p>
-                    भीमाद नगरपालिका, तनहुँ, गण्डकी प्रदेश, नेपाल
-                </p>
-
-                <a
-                    class="btn btn-primary"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Bhimad+Municipality,Tanahun,Nepal"
-                >
-                    Google Maps मा खोल्नुहोस् →
-                </a>
-
-                <p style="font-size:12px;margin-top:18px;">
-                    MAP PHOTO / EMBED SLOT
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
-
-
-<!-- CONTACT -->
-<section id="contact">
-
-    <div class="container">
-
-        <div class="section-head">
-            <div class="eyebrow">CONTACT</div>
-            <h2>सम्पर्क जानकारी</h2>
-        </div>
-
-
-        <div class="contact-grid">
-
-            <div class="glass">
-
-                <h3>भीमाद नगरपालिका</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <strong>ठेगाना</strong>
-                        <span>भीमाद, तनहुँ, गण्डकी प्रदेश, नेपाल</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">☎️</div>
-                    <div>
-                        <strong>फोन</strong>
-                        <span>065-572436</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div>
-                        <strong>Email</strong>
-                        <span>bhimadmunicipality@gmail.com</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="glass">
-
-                <h3>आपतकालीन एम्बुलेन्स</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🚑</div>
-                    <div>
-                        <strong>Ambulance</strong>
-                        <span>9815193131</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🚑</div>
-                    <div>
-                        <strong>Ambulance</strong>
-                        <span>9748219100</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">🚑</div>
-                    <div>
-                        <strong>Ambulance</strong>
-                        <span>9827186771</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div>
-                <div class="brand">
-                    <div class="brand-icon">⛰</div>
-                    <div>
-                        <h1>Bhimad Digital Portal</h1>
-                        <small>Explore • Connect • Discover</small>
-                    </div>
-                </div>
-
-                <p style="margin-top:15px;">
-                    भीमादको प्राकृतिक सौन्दर्य, स्थानीय संस्कृति,
-                    प्रशासनिक जानकारी तथा पर्यटन सम्भावनालाई एउटै
-                    डिजिटल प्लेटफर्ममा प्रस्तुत गर्ने अवधारणा।
-                </p>
-            </div>
-
-
-            <div>
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#about">नगरपालिका परिचय</a></li>
-                    <li><a href="#wards">९ वटै वडा</a></li>
-                    <li><a href="#tourism">पर्यटन</a></li>
-                    <li><a href="#services">सेवाहरू</a></li>
-                </ul>
-            </div>
-
-
-            <div>
-                <h3>Official Source</h3>
-                <ul>
-                    <li>
-                        <a href="https://bhimadmun.gov.np/" target="_blank">
-                            भीमाद नगरपालिका
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://bhimadmun.gov.np/publication" target="_blank">
-                            Publications
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://bhimadmun.gov.np/ward-offices" target="_blank">
-                            Ward Offices
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 Bhimad Digital Portal
-            </span>
-
-            <span>
-                Information portal concept • Not an official municipal website
-            </span>
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<script>
-
-/* ================= WARD DATA ================= */
-
-const wards = [
-
-{
-    no:1,
-    name:"वडा नं. १",
-    office:"काहुले",
-    area:"19.26 sq. km.",
-    population:"3,859",
-    description:
-    "साविक किहुँ र गजरकोट क्षेत्र समेटेर बनेको वडा। वडा कार्यालय काहुलेमा रहेको छ।"
-},
-
-{
-    no:2,
-    name:"वडा नं. २",
-    office:"टेक्रे",
-    area:"18.70 sq. km.",
-    population:"3,974",
-    description:
-    "साविक अरुणोदय गाविसका वडा नं. १ देखि ९ सम्मको क्षेत्र समेटेर बनेको वडा।"
-},
-
-{
-    no:3,
-    name:"वडा नं. ३",
-    office:"खेक्रेटार",
-    area:"15.41 sq. km.",
-    population:"1,629",
-    description:
-    "साविक माझकोट क्षेत्रका वडा नं. ७ र ८ समेटेर बनेको वडा। वडा कार्यालय खेक्रेटारमा रहेको छ।"
-},
-
-{
-    no:4,
-    name:"वडा नं. ४",
-    office:"सिंचित",
-    area:"23.38 sq. km.",
-    population:"2,140",
-    description:
-    "साविक माझकोट क्षेत्रका वडा नं. १ देखि ५ सम्मको क्षेत्र समेटेर बनेको वडा।"
-},
-
-{
-    no:5,
-    name:"वडा नं. ५",
-    office:"बुडुवाफाँट",
-    area:"17.82 sq. km.",
-    population:"3,434",
-    description:
-    "साविक माझकोट वडा नं. ९, रिसिङ रानीपोखरी वडा नं. ९ तथा सभुङ भगवतीपुर वडा नं. २ समेटिएको वडा।"
-},
-
-{
-    no:6,
-    name:"वडा नं. ६",
-    office:"भीमाद",
-    area:"3.27 sq. km.",
-    population:"7,253",
-    description:
-    "साविक भीमाद गाविसको वडा नं. १ बाट बनेको वडा। वडा कार्यालय भीमादमा रहेको छ।"
-},
-
-{
-    no:7,
-    name:"वडा नं. ७",
-    office:"पोखरीछाप",
-    area:"8.01 sq. km.",
-    population:"2,351",
-    description:
-    "साविक भानुमती वडा नं. ७ तथा भीमादका वडा नं. २, ४, ५, ८ र ९ क्षेत्र समेटिएको वडा।"
-},
-
-{
-    no:8,
-    name:"वडा नं. ८",
-    office:"अरौंदी",
-    area:"10.52 sq. km.",
-    population:"2,498",
-    description:
-    "साविक भानुमती वडा नं. १, ३, ९ तथा भीमादका वडा नं. ३, ६ र ७ क्षेत्र समेटिएको वडा।"
-},
-
-{
-    no:9,
-    name:"वडा नं. ९",
-    office:"रिठ्ठाभञ्ज्याङ",
-    area:"12.92 sq. km.",
-    population:"2,100",
-    description:
-    "प्राकृतिक तथा धार्मिक सम्पदाका दृष्टिले महत्वपूर्ण क्षेत्र। सिद्ध गुफा, झरना, जौपानी बराह लगायतका स्थानीय सम्पदाहरू यस क्षेत्रमा छन्।"
-}
-
-];
-
-
-/* ================= CREATE WARDS ================= */
-
-const wardGrid = document.getElementById("wardGrid");
-
-wards.forEach(ward => {
-
-    wardGrid.innerHTML += `
-
-        <article class="ward-card">
-
-            <div class="photo-slot">
-                <span>
-                    REAL PHOTO SLOT<br>
-                    वडा नं. ${ward.no} को वास्तविक फोटो
-                </span>
-            </div>
-
-            <div class="ward-content">
-
-                <div class="ward-number">
-                    ${ward.no}
-                </div>
-
-                <h3>${ward.name}</h3>
-
-                <p>
-                    ${ward.description}
-                </p>
-
-                <div class="ward-meta">
-
-                    <span>
-                        📍 ${ward.office}
-                    </span>
-
-                    <span>
-                        👥 ${ward.population}
-                    </span>
-
-                </div>
-
-                <div class="ward-meta" style="margin-top:8px;">
-
-                    <span>
-                        क्षेत्रफल
-                    </span>
-
-                    <span>
-                        ${ward.area}
-                    </span>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
-});
-
-
-/* ================= LANGUAGE BUTTON ================= */
-
-let english = false;
-
-function toggleLanguage(){
-
-    english = !english;
-
-    if(english){
-
-        document.documentElement.lang = "en";
-
-        alert(
-            "English version is being prepared. The portal currently contains Nepali primary content."
-        );
-
-    }else{
-
-        document.documentElement.lang = "ne";
-
+<!-- END: Contact & Helplines -->
+</main>
+<!-- BEGIN: Fixed Bottom Navigation Bar (iOS PWA Style) -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[425px] bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-2 flex justify-around items-center z-50 shadow-bottom-nav">
+<!-- Home Nav -->
+<a class="nav-btn flex flex-col items-center justify-center text-brand-700 text-[10px] font-bold group" href="#home-section">
+<div class="w-6 h-6 flex items-center justify-center rounded-lg bg-brand-100 text-brand-800 transition">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20">
+<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+</svg>
+</div>
+<span class="mt-0.5">गृह</span>
+</a>
+<!-- About Nav -->
+<a class="nav-btn flex flex-col items-center justify-center text-slate-500 hover:text-brand-700 text-[10px] font-medium group" href="#about-section">
+<div class="w-6 h-6 flex items-center justify-center rounded-lg group-hover:bg-brand-50 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="mt-0.5">परिचय</span>
+</a>
+<!-- Wards Nav -->
+<a class="nav-btn flex flex-col items-center justify-center text-slate-500 hover:text-brand-700 text-[10px] font-medium group" href="#wards-section">
+<div class="w-6 h-6 flex items-center justify-center rounded-lg group-hover:bg-brand-50 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="mt-0.5">वडाहरू</span>
+</a>
+<!-- Tourism Nav -->
+<a class="nav-btn flex flex-col items-center justify-center text-slate-500 hover:text-brand-700 text-[10px] font-medium group" href="#tourism-section">
+<div class="w-6 h-6 flex items-center justify-center rounded-lg group-hover:bg-brand-50 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="mt-0.5">पर्यटन</span>
+</a>
+<!-- Emergency Nav -->
+<a class="nav-btn flex flex-col items-center justify-center text-rose-600 text-[10px] font-bold group" href="#contact-section">
+<div class="w-6 h-6 flex items-center justify-center rounded-lg bg-rose-50 group-hover:bg-rose-100 transition">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 20 20">
+<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"></path>
+</svg>
+</div>
+<span class="mt-0.5">सम्पर्क</span>
+</a>
+</nav>
+<!-- END: Fixed Bottom Navigation Bar -->
+</div>
+<!-- BEGIN: Interactive Logic Scripts -->
+<script data-purpose="live-clock-and-date">
+    // Devanagari numerals converter
+    const toDevanagariNumerals = (num) => {
+      const devanagariDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+      return num.toString().replace(/\d/g, (d) => devanagariDigits[d]);
+    };
+
+    // Live Clock Function
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // '0' should be 12
+      const formattedHours = String(hours).padStart(2, '0');
+
+      const timeString = `${toDevanagariNumerals(formattedHours)}:${toDevanagariNumerals(minutes)}:${toDevanagariNumerals(seconds)} ${ampm}`;
+      
+      const clockElement = document.getElementById('live-time');
+      if (clockElement) {
+        clockElement.textContent = timeString;
+      }
     }
 
-}
+    // Initialize clock ticker
+    setInterval(updateClock, 1000);
+    updateClock();
 
-</script>
+    // Nepali Month approximate calendar label
+    const nepaliMonths = ["बैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कार्तिक", "मंसिर", "पौष", "माघ", "फागुन", "चैत"];
+    const today = new Date();
+    // Simplified BS offset estimation for UI realism
+    const estBsDay = toDevanagariNumerals(today.getDate());
+    const dateLabelEl = document.getElementById('nepali-date-label');
+    if (dateLabelEl) {
+      dateLabelEl.textContent = `आज: २०८१ ${estBsDay} गते`;
+    }
+  </script>
+<script data-purpose="pwa-and-search-handlers">
+    // PWA banner dismissal
+    const pwaBanner = document.getElementById('pwa-install-banner');
+    const pwaCloseBtn = document.getElementById('pwa-close-btn');
+    const pwaInstallBtn = document.getElementById('pwa-install-btn');
 
-</body>
-</html>
+    if (pwaCloseBtn && pwaBanner) {
+      pwaCloseBtn.addEventListener('click', () => {
+        pwaBanner.style.maxHeight = '0px';
+        pwaBanner.style.opacity = '0';
+        setTimeout(() => pwaBanner.remove(), 300);
+      });
+    }
 
+    if (pwaInstallBtn) {
+      pwaInstallBtn.addEventListener('click', () => {
+        alert("भीमाद डिजिटल एप तपाईंको होमस्क्रिनमा थप्न 'Add to Home Screen' छान्नुहोस्।");
+      });
+    }
+
+    // Ward Live Filter Search
+    const searchInput = document.getElementById('ward-search');
+    const wardCards = document.querySelectorAll('.ward-card');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        wardCards.forEach((card) => {
+          const wardData = card.getAttribute('data-ward') || '';
+          if (wardData.toLowerCase().includes(query)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Language toggle feedback
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isNepali = langBtn.innerText.includes('नेपाली');
+        if (isNepali) {
+          langBtn.innerHTML = `<span>EN</span> <span class="text-slate-400">/</span> <span class="text-slate-500 text-[10px]">नेपाली</span>`;
+        } else {
+          langBtn.innerHTML = `<span>नेपाली</span> <span class="text-slate-400">/</span> <span class="text-slate-500 text-[10px]">EN</span>`;
+        }
+      });
+    }
+  </script>
+<!-- END: Interactive Logic Scripts -->
+</body></html> 
+    }
+
+/
+    }
+
+    ."
